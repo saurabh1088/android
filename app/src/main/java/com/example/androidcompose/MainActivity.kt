@@ -48,6 +48,10 @@ is such that the names are capitalized.
 Functions annotated with @Composable :
 - Names are capitalized
 - Can't return anything
+
+A @Composable annotated function tells Kotlin compiler that this is a special function which will
+take in some data and use it to describe and emit some UI.
+A @Composable function is idempotent.
  */
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
