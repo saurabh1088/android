@@ -7,7 +7,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -50,7 +52,9 @@ class MainActivity : ComponentActivity() {
 
 //                    ComposeArticle()
 
-                    TaskManager()
+//                    TaskManager()
+
+                    ComposeQuadrant()
                 }
             }
         }
@@ -184,6 +188,53 @@ fun TaskManager() {
             text = "Nice work!",
             fontSize = 16.sp
         )
+    }
+}
+
+//TODO: Fix issue with ComposeQuadrant
+@Composable
+fun ComposeQuadrant() {
+    Column(Modifier.fillMaxWidth()) {
+        Row() {
+            Column() {
+                Text(
+                    text = "Text composable",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Displays text and follows the recommended Material Design guidelines."
+                )
+            }
+            Column() {
+                Text(
+                    text = "Image composable",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Creates a composable that lays out and draws a given Painter class object."
+                )
+            }
+        }
+        Row() {
+            Column() {
+                Text(
+                    text = "Row composable",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "A layout composable that places its children in a horizontal sequence."
+                )
+            }
+            Column() {
+                Text(
+                    text = "Column composable",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "A layout composable that places its children in a vertical sequence."
+                )
+            }
+        }
     }
 }
 
