@@ -18,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
+import androidx.compose.ui.layout.ContentScale.Companion.FillWidth
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,10 +43,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage(
-                        message = getString(R.string.happy_birthday_batman),
-                        from = getString(R.string.from_man_of_steel)
-                    )
+//                    GreetingImage(
+//                        message = getString(R.string.happy_birthday_batman),
+//                        from = getString(R.string.from_man_of_steel)
+//                    )
+
+//                    ComposeArticle()
+
+                    TaskManager()
                 }
             }
         }
@@ -114,6 +120,69 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
+        )
+    }
+}
+
+@Composable
+fun ComposeArticle() {
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    Column {
+        Image(
+            painter = image,
+            contentDescription = null,
+            contentScale = FillWidth
+        )
+        Text(
+            text = stringResource(R.string.jetpack_compose_tutorial),
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+        Text(
+            text = stringResource(R.string.jetpack_compose_tutorial_intro_para_one),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp
+                )
+        )
+        Text(
+            text = stringResource(R.string.jetpack_compose_tutorial_intro_para_two),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+    }
+}
+
+@Composable
+fun TaskManager() {
+    val image = painterResource(id = R.drawable.ic_task_completed)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        Text(
+            text = "All tasks completed",
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(
+                    top = 24.dp,
+                    bottom = 8.dp
+                )
+        )
+        Text(
+            text = "Nice work!",
+            fontSize = 16.sp
         )
     }
 }
