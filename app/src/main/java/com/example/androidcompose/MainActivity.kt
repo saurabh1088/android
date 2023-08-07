@@ -195,46 +195,49 @@ fun TaskManager() {
 @Composable
 fun ComposeQuadrant() {
     Column(Modifier.fillMaxWidth()) {
-        Row() {
-            Column() {
-                Text(
-                    text = "Text composable",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Displays text and follows the recommended Material Design guidelines."
-                )
-            }
-            Column() {
-                Text(
-                    text = "Image composable",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Creates a composable that lays out and draws a given Painter class object."
-                )
-            }
+        Row(Modifier.weight(1f)) {
+            Card(
+                title = "Text composable",
+                description = "Displays text and follows the recommended Material Design guidelines.",
+                modifier = Modifier.weight(1f)
+            )
+            Card(
+                title = "Image composable",
+                description = "Creates a composable that lays out and draws a given Painter class object.",
+                modifier = Modifier.weight(1f)
+            )
         }
-        Row() {
-            Column() {
-                Text(
-                    text = "Row composable",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "A layout composable that places its children in a horizontal sequence."
-                )
-            }
-            Column() {
-                Text(
-                    text = "Column composable",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "A layout composable that places its children in a vertical sequence."
-                )
-            }
+        Row(Modifier.weight(1f)) {
+            Card(
+                title = "Row composable",
+                description = "A layout composable that places its children in a horizontal sequence.",
+                modifier = Modifier.weight(1f)
+            )
+            Card(
+                title = "Column composable",
+                description = "A layout composable that places its children in a vertical sequence.",
+                modifier = Modifier.weight(1f)
+            )
         }
+    }
+}
+
+@Composable
+fun Card(title: String, description: String, modifier: Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = description
+        )
     }
 }
 
