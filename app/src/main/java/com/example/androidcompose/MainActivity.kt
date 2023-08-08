@@ -30,6 +30,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androidcompose.ui.theme.AndroidComposeTheme
 
+/**
+ * In Android, `Activity` is a single, focused thing that the user can do. Activity class takes the
+ * responsibility of creating a window where UI is placed using setContentView(View) which is a method
+ * provided from Activity class.
+ * Every screen or user interface screen in an Android app is usually implemented as an Activity.
+ *
+ * Activities in Android :
+ * 1. Represent user interface hence have responsibility being a means to interact.
+ * 2. Contain user elements and manage those, including the lifecycles.
+ * 3. Manage navigation
+ */
 class MainActivity : ComponentActivity() {
 
     /*
