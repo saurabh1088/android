@@ -1,6 +1,7 @@
 package com.example.android_hello
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,8 +14,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.android_hello.ui.theme.AndroidhelloTheme
 
 class MainActivity : ComponentActivity() {
+
+    private fun log(event: String) {
+        Log.d("LIFECYCLE", "MainActivity → $event")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        log("onCreate")
         setContent {
             AndroidhelloTheme {
                 // A surface container using the 'background' color from the theme
@@ -26,6 +33,31 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        log("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        log("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        log("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        log("onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        log("onDestroy")
     }
 }
 
