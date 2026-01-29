@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         log("onCreate")
         setContent {
+            val viewModel: MainViewModel = MainViewModel()
             AndroidhelloTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -33,7 +34,12 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         Greeting("Android")
-                        CounterScreen()
+                        Column {
+                            Text(text = "Count: ${viewModel.count}")
+                            Button(onClick = { viewModel.increment() }) {
+                                Text("Increment")
+                            }
+                        }
                     }
                 }
             }
@@ -72,18 +78,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
-}
-
-@Composable
-fun CounterScreen() {
-    var count = 0 // Local variable - This will "die" on rotation
-
-    Column {
-        Text(text = "Count: $count")
-        Button(onClick = { count++ }) {
-            Text("Increment")
-        }
-    }
 }
 
 @Preview(showBackground = true)
