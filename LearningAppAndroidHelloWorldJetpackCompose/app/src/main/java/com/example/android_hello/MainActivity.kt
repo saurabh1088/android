@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
@@ -17,6 +18,8 @@ import com.example.android_hello.ui.theme.AndroidhelloTheme
 
 class MainActivity : ComponentActivity() {
 
+    private val viewModel: MainViewModel by viewModels()
+
     private fun log(event: String) {
         Log.d("LIFECYCLE", "MainActivity → $event")
     }
@@ -25,7 +28,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         log("onCreate")
         setContent {
-            val viewModel: MainViewModel = MainViewModel()
             AndroidhelloTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
