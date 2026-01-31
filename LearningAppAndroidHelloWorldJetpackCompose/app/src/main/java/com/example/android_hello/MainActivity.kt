@@ -1,6 +1,5 @@
 package com.example.android_hello
 
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -22,6 +21,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.android_hello.ui.theme.AndroidhelloTheme
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 
 class MainActivity : ComponentActivity() {
 
@@ -55,6 +61,18 @@ class MainActivity : ComponentActivity() {
                         }
 
                         Spacer(modifier = Modifier.height(16.dp))
+
+                        Image(
+                            painter = painterResource(id = R.drawable.android_logo),
+                            contentDescription = "Android Logo",
+                            modifier = Modifier
+                                .height(200.dp)
+                                .padding(8.dp)                // Outer spacing
+                                .graphicsLayer(rotationZ = 10f) // Slight tilt
+                                .clip(RoundedCornerShape(20.dp)) // Rounded corners
+                                .border(2.dp, Color.Green, RoundedCornerShape(20.dp)) // Matching border
+                        )
+
                     }
                 }
             }
