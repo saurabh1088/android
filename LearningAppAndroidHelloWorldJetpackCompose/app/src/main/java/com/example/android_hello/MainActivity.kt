@@ -55,13 +55,6 @@ class MainActivity : ComponentActivity() {
                         }
 
                         Spacer(modifier = Modifier.height(16.dp))
-
-                        Image(
-                            painter = painterResource(id = R.drawable.android_logo),
-                            contentDescription = "Android Logo",
-                            modifier = Modifier.size(100.dp)
-                        )
-
                     }
                 }
             }
