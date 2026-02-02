@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.TextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.saveable.rememberSaveable
 import com.example.learningappandroidstatemanagement.ui.theme.LearningAppAndroidStateManagementTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         GreetingWithState()
                         GreetingStateless()
+                        GreetingWithStateSurvival()
                     }
                 }
             }
@@ -96,6 +98,31 @@ fun GreetingStateless() {
             value = name,
             onValueChange = { newText -> name = newText }, // Event trigger
             label = { Text("Enter your name (Stateless)") }
+        )
+    }
+}
+
+@Composable
+fun GreetingWithStateSurvival() {
+    // 1. Define the State
+    // 'rememberSaveable' keeps the value during recomposition
+    // AND survives configuration changes (e.g. screen rotation)
+    var name by rememberSaveable { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // 2. The UI reads the State
+        Text(text = if (name.isEmpty()) "Hello, Stranger!" else "Hello, $name!")
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 3. The Event updates the State
+        TextField(
+            value = name,
+            onValueChange = { newText -> name = newText },
+            label = { Text("Enter your name (Stateful + Saveable)") }
         )
     }
 }
