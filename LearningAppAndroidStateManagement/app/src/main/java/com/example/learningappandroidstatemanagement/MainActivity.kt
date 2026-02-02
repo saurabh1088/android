@@ -37,6 +37,7 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         GreetingWithState()
+                        GreetingStateless()
                     }
                 }
             }
@@ -72,7 +73,29 @@ fun GreetingWithState() {
         TextField(
             value = name,
             onValueChange = { newText -> name = newText }, // Event trigger
-            label = { Text("Enter your name") }
+            label = { Text("Enter your name (Stateful)") }
+        )
+    }
+}
+
+@Composable
+fun GreetingStateless() {
+    var name = ""
+
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // 2. The UI reads the State
+        Text(text = if (name.isEmpty()) "Hello, Stranger!" else "Hello, $name!")
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 3. The Event updates the State
+        TextField(
+            value = name,
+            onValueChange = { newText -> name = newText }, // Event trigger
+            label = { Text("Enter your name (Stateless)") }
         )
     }
 }
