@@ -26,6 +26,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
 import com.example.learningappandroidstatemanagement.ui.theme.LearningAppAndroidStateManagementTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,6 +46,7 @@ class MainActivity : ComponentActivity() {
                         GreetingStateless()
                         GreetingWithStateSurvival()
                         HoistedStateExample()
+                        GreetingWithViewModel()
                     }
                 }
             }
@@ -165,6 +168,25 @@ fun ChoiceButtons(onOptionSelected: (String) -> Unit) {
         Button(onClick = { onOptionSelected("Option B") }) {
             Text("Select B")
         }
+    }
+}
+
+@Composable
+fun GreetingWithViewModel(
+    modifier: Modifier = Modifier,
+    // Injecting the ViewModel
+    viewModel: GreetingViewModel = viewModel()
+) {
+    // 4. Collect the StateFlow as a Compose State
+    val name by viewModel.name.collectAsState()
+
+    Column(modifier = modifier.padding(16.dp)) {
+        Text(text = "ViewModel State: Hello, $name!")
+        TextField(
+            value = name,
+            onValueChange = { viewModel.onNameChange(it) },
+            label = { Text("Enter name for ViewModel") }
+        )
     }
 }
 
