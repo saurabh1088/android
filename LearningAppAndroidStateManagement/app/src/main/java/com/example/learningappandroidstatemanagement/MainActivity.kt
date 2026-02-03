@@ -23,6 +23,9 @@ import androidx.compose.material3.TextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import com.example.learningappandroidstatemanagement.ui.theme.LearningAppAndroidStateManagementTheme
 
 class MainActivity : ComponentActivity() {
@@ -40,6 +43,7 @@ class MainActivity : ComponentActivity() {
                         GreetingWithState()
                         GreetingStateless()
                         GreetingWithStateSurvival()
+                        HoistedStateExample()
                     }
                 }
             }
@@ -124,6 +128,43 @@ fun GreetingWithStateSurvival() {
             onValueChange = { newText -> name = newText },
             label = { Text("Enter your name (Stateful + Saveable)") }
         )
+    }
+}
+
+@Composable
+fun HoistedStateExample() {
+    // 1. State is Hoisted here
+    var selection by rememberSaveable { mutableStateOf("No selection yet") }
+
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Label is part of the parent view
+        Text(
+            text = "Current Choice: $selection",
+            style = MaterialTheme.typography.headlineMedium
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // 2. Pass the "Event Handlers" (Lambdas) to the child
+        ChoiceButtons(
+            onOptionSelected = { choice -> selection = choice }
+        )
+    }
+}
+
+@Composable
+fun ChoiceButtons(onOptionSelected: (String) -> Unit) {
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Button(onClick = { onOptionSelected("Option A") }) {
+            Text("Select A")
+        }
+
+        Button(onClick = { onOptionSelected("Option B") }) {
+            Text("Select B")
+        }
     }
 }
 
