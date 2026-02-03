@@ -24,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -38,20 +37,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             LearningAppAndroidStateManagementTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    // Use LazyColumn for scrolling
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        // Apply Scaffold's padding here so items don't hide under the status bar
-                        contentPadding = innerPadding,
-                        verticalArrangement = Arrangement.spacedBy(24.dp),
+                    Column(
+                        modifier = Modifier.padding(innerPadding),
+                        verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // In a LazyColumn, every element must be wrapped in an 'item' block
-                        item { GreetingWithState() }
-                        item { GreetingStateless() }
-                        item { GreetingWithStateSurvival() }
-                        item { HoistedStateExample() }
-                        item { GreetingWithViewModel() }
+                        GreetingWithState()
+                        GreetingStateless()
+                        GreetingWithStateSurvival()
+                        HoistedStateExample()
+                        GreetingWithViewModel()
                     }
                 }
             }
