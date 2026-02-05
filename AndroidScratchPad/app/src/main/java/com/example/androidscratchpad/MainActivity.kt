@@ -30,16 +30,21 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier.padding(paddingValues = innerPadding)
                     ) {
-                        Text(
-                            text = "Hello Android!",
-                            style = MaterialTheme.typography.headlineLarge,
-                            modifier = Modifier.padding(16.dp)
-                        )
+                        OotbText()
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+fun OotbText() {
+    Text(
+        text = "Hello Android!",
+        style = MaterialTheme.typography.headlineLarge,
+        modifier = Modifier.padding(16.dp)
+    )
 }
 
 @Composable
