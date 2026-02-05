@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier.padding(paddingValues = innerPadding)
                     ) {
-                        OotbBox()
+                        OotbColumnRow()
                     }
                 }
             }
@@ -61,6 +62,29 @@ fun OotbBox() {
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(16.dp)
         )
+    }
+}
+
+@Composable
+fun OotbColumnRow() {
+    Column() {
+        Text(
+            text = "This is Android!",
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.padding(16.dp)
+        )
+        Row() {
+            Text(
+                text = "Hell",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(16.dp)
+            )
+            Text(
+                text = "Yeah",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
     }
 }
 
