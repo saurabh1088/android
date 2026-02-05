@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Badge
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier.padding(paddingValues = innerPadding)
                     ) {
-                        OotbCard()
+                        OotbBadge()
                     }
                 }
             }
@@ -104,6 +105,36 @@ fun OotbCard() {
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(16.dp)
         )
+    }
+}
+
+@Composable
+fun OotbBadge() {
+    Column() {
+        Badge {
+            Text(
+                text = "This!",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+        Row() {
+            Badge {
+                Text(
+                    text = "is",
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+
+            Badge {
+                Text(
+                    text = "Android!",
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
     }
 }
 
