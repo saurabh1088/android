@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -48,6 +49,7 @@ class MainActivity : ComponentActivity() {
                         OotbIconButton()
                         OotbTextField()
                         OotbCheckbox()
+                        OotbSwitch()
                     }
                 }
             }
@@ -197,6 +199,19 @@ fun OotbCheckbox() {
         checked = false,
         onCheckedChange = {
             println("Checkbox Changed")
+        },
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OotbSwitch() {
+    // TODO: Updated to add true state, at present this remains unchecked
+    // TODO: Add a title to it, this might need to wrap this in a Row
+    Switch(
+        checked = false,
+        onCheckedChange = {
+            println("Switch Changed")
         },
         modifier = Modifier.padding(16.dp)
     )
