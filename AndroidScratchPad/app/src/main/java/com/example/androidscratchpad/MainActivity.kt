@@ -20,7 +20,9 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -50,6 +52,8 @@ class MainActivity : ComponentActivity() {
                         OotbTextField()
                         OotbCheckbox()
                         OotbSwitch()
+                        OotbSlider()
+                        OotbRadioButton()
                     }
                 }
             }
@@ -212,6 +216,28 @@ fun OotbSwitch() {
         checked = false,
         onCheckedChange = {
             println("Switch Changed")
+        },
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OotbSlider() {
+    Slider(
+        value = 0f,
+        onValueChange = {
+            println("Slider Changed")
+        },
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OotbRadioButton() {
+    RadioButton(
+        selected = false,
+        onClick = {
+            println("Radio Button Changed")
         },
         modifier = Modifier.padding(16.dp)
     )
