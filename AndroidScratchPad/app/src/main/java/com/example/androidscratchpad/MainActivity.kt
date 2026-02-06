@@ -10,10 +10,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,6 +43,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         OotbBadge()
                         OotbButton()
+                        OotbIconButton()
                     }
                 }
             }
@@ -145,11 +150,27 @@ fun OotbBadge() {
 fun OotbButton() {
     Button(
         onClick = {
-            println("Clicked")
+            println("Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Button Click")
+    }
+}
+
+@Composable
+fun OotbIconButton() {
+    IconButton(
+        onClick = {
+            println("Icon Button Clicked")
         },
         modifier = Modifier.padding(16.dp)
     ) {
-        Text(text = "Click")
+        Icon(
+            imageVector = Icons.Default.Favorite,
+            contentDescription = "Favorite"
+        )
     }
 }
 
