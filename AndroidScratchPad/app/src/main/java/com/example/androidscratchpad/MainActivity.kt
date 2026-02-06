@@ -16,6 +16,7 @@ import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -46,6 +47,7 @@ class MainActivity : ComponentActivity() {
                         OotbButton()
                         OotbIconButton()
                         OotbTextField()
+                        OotbCheckbox()
                     }
                 }
             }
@@ -185,6 +187,18 @@ fun OotbTextField() {
         },
         modifier = Modifier.padding(16.dp),
         shape = MaterialTheme.shapes.medium
+    )
+}
+
+@Composable
+fun OotbCheckbox() {
+    // TODO: Updated to add true state, at present this remains unchecked
+    Checkbox(
+        checked = false,
+        onCheckedChange = {
+            println("Checkbox Changed")
+        },
+        modifier = Modifier.padding(16.dp)
     )
 }
 
