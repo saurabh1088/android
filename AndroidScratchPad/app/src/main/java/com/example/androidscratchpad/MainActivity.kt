@@ -1,6 +1,7 @@
 package com.example.androidscratchpad
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Badge
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +38,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(paddingValues = innerPadding)
                     ) {
                         OotbBadge()
+                        OotbButton()
                     }
                 }
             }
@@ -135,6 +138,18 @@ fun OotbBadge() {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun OotbButton() {
+    Button(
+        onClick = {
+            println("Clicked")
+        },
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(text = "Click")
     }
 }
 
