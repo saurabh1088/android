@@ -26,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -60,6 +61,7 @@ class MainActivity : ComponentActivity() {
                         OotbCircularProgressIndicator()
                         OotbLinearProgressIndicator()
                         OotbAlertDialog()
+                        OotbSnackbar()
                     }
                 }
             }
@@ -294,6 +296,24 @@ fun OotbAlertDialog() {
             }
         }
     )
+}
+
+@Composable
+fun OotbSnackbar() {
+    Snackbar(
+        modifier = Modifier.padding(16.dp),
+        action = {
+            Button(
+                onClick = {
+                    println("Snackbar Action Clicked")
+                }
+            ) {
+                Text(text = "Action")
+            }
+        }
+    ) {
+        Text(text = "This is a Snackbar message")
+    }
 }
 
 @Composable
