@@ -20,6 +20,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -55,7 +56,8 @@ class MainActivity : ComponentActivity() {
                         OotbSwitch()
                         OotbSlider()
                         OotbRadioButton()
-                        CircularProgressIndicator()
+                        OotbCircularProgressIndicator()
+                        OotbLinearProgressIndicator()
                     }
                 }
             }
@@ -248,6 +250,13 @@ fun OotbRadioButton() {
 @Composable
 fun OotbCircularProgressIndicator() {
     CircularProgressIndicator(
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OotbLinearProgressIndicator() {
+    LinearProgressIndicator(
         modifier = Modifier.padding(16.dp)
     )
 }
