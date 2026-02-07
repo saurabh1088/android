@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -58,6 +59,7 @@ class MainActivity : ComponentActivity() {
                         OotbRadioButton()
                         OotbCircularProgressIndicator()
                         OotbLinearProgressIndicator()
+                        OotbAlertDialog()
                     }
                 }
             }
@@ -258,6 +260,39 @@ fun OotbCircularProgressIndicator() {
 fun OotbLinearProgressIndicator() {
     LinearProgressIndicator(
         modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun OotbAlertDialog() {
+    AlertDialog(
+        onDismissRequest = {
+            println("Alert Dialog Dismissed")
+        },
+        title = {
+            Text(text = "Alert Dialog")
+        },
+        text = {
+            Text(text = "This is an alert dialog")
+        },
+        confirmButton = {
+            Button(
+                onClick = {
+                    println("Alert Dialog Confirmed")
+                }
+            ) {
+                Text(text = "Confirm")
+            }
+        },
+        dismissButton = {
+            Button(
+                onClick = {
+                    println("Alert Dialog Dismissed")
+                }
+            ) {
+                Text(text = "Dismiss")
+            }
+        }
     )
 }
 
