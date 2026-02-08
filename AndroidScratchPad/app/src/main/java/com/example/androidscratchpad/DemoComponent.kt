@@ -26,6 +26,7 @@ val components = listOf(
             OotbOutlinedButton()
             OotbElevatedButton()
             OotbTextButton()
+            MyCustomButton()
         }
     },
     DemoComponent("Text Input") { OotbTextField() },
