@@ -46,6 +46,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.TextButton
 import com.example.androidscratchpad.ui.theme.AndroidScratchPadTheme
 import com.example.androidscratchpad.DemoComponent
 
@@ -225,6 +229,58 @@ fun OotbIconButton() {
             imageVector = Icons.Default.Favorite,
             contentDescription = "Favorite"
         )
+    }
+}
+
+@Composable
+fun OotbFilledTonalButton() {
+    FilledTonalButton(
+        onClick = {
+            println("Filled Tonal Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Filled Tonal Button")
+    }
+}
+
+@Composable
+fun OotbOutlinedButton() {
+    OutlinedButton(
+        onClick = {
+            println("Outlined Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Outlined Button")
+    }
+}
+
+@Composable
+fun OotbElevatedButton() {
+    ElevatedButton(
+        onClick = {
+            println("Elevated Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Elevated Button")
+    }
+}
+
+@Composable
+fun OotbTextButton() {
+    TextButton(
+        onClick = {
+            println("Text Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Text Button")
     }
 }
 

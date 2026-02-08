@@ -16,9 +16,16 @@ data class DemoComponent(
 val components = listOf(
     DemoComponent("Badge") { OotbBadge() },
     DemoComponent("Buttons") {
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             OotbButton()
             OotbIconButton()
+            OotbFilledTonalButton()
+            OotbOutlinedButton()
+            OotbElevatedButton()
+            OotbTextButton()
         }
     },
     DemoComponent("Text Input") { OotbTextField() },
