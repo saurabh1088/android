@@ -3,10 +3,15 @@ package com.example.androidscratchpad
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 data class DemoComponent(
     val name: String,
@@ -54,9 +59,20 @@ val components = listOf(
         }
     },
     DemoComponent("Dialogs & Feedback") {
+        var showDialog by remember { mutableStateOf(false) }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+            Button(
+                onClick = { showDialog = true }
+            ) {
+                Text("Show Dialog")
+            }
+
             // These usually contain buttons that trigger the Dialog/Snackbar
-            OotbAlertDialog()
+            OotbAlertDialog(
+                showDialog = showDialog,
+                onDismiss = { showDialog = false }
+            )
             OotbSnackbar()
         }
     }

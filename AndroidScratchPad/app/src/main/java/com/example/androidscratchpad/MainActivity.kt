@@ -402,36 +402,42 @@ fun OotbLinearProgressIndicator() {
 }
 
 @Composable
-fun OotbAlertDialog() {
-    AlertDialog(
-        onDismissRequest = {
-            println("Alert Dialog Dismissed")
-        },
-        title = {
-            Text(text = "Alert Dialog")
-        },
-        text = {
-            Text(text = "This is an alert dialog")
-        },
-        confirmButton = {
-            Button(
-                onClick = {
-                    println("Alert Dialog Confirmed")
+fun OotbAlertDialog(
+    showDialog: Boolean,
+    onDismiss: () -> Unit
+) {
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                println("Alert Dialog Dismissed")
+            },
+            title = {
+                Text(text = "Alert Dialog")
+            },
+            text = {
+                Text(text = "This is an alert dialog")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        println("Alert Dialog Confirmed")
+                    }
+                ) {
+                    Text(text = "Confirm")
                 }
-            ) {
-                Text(text = "Confirm")
-            }
-        },
-        dismissButton = {
-            Button(
-                onClick = {
-                    println("Alert Dialog Dismissed")
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        println("Alert Dialog Dismissed")
+                        onDismiss()
+                    }
+                ) {
+                    Text(text = "Dismiss")
                 }
-            ) {
-                Text(text = "Dismiss")
             }
-        }
-    )
+        )
+    }
 }
 
 @Composable
