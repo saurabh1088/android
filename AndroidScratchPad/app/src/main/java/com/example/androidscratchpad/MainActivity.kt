@@ -46,6 +46,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontWeight
 import com.example.androidscratchpad.ui.theme.AndroidScratchPadTheme
 import com.example.androidscratchpad.DemoComponent
 
@@ -229,6 +237,98 @@ fun OotbIconButton() {
 }
 
 @Composable
+fun OotbFilledTonalButton() {
+    FilledTonalButton(
+        onClick = {
+            println("Filled Tonal Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Filled Tonal Button")
+    }
+}
+
+@Composable
+fun OotbOutlinedButton() {
+    OutlinedButton(
+        onClick = {
+            println("Outlined Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Outlined Button")
+    }
+}
+
+@Composable
+fun OotbElevatedButton() {
+    ElevatedButton(
+        onClick = {
+            println("Elevated Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Elevated Button")
+    }
+}
+
+@Composable
+fun OotbTextButton() {
+    TextButton(
+        onClick = {
+            println("Text Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Text(text = "Text Button")
+    }
+}
+
+@Composable
+fun MyCustomButton() {
+    CustomButton(
+        text = "Custom Button",
+        onClick = {
+            println("Custom Button Clicked")
+        },
+        modifier = Modifier.padding(16.dp),
+        enabled = true
+    )
+}
+
+@Composable
+fun CustomButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
+    Surface(
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(12.dp),
+        color = if (enabled) Color(0xFF6200EE) else Color.Gray,
+        shadowElevation = 6.dp
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(horizontal = 24.dp, vertical = 14.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = text,
+                color = Color.White,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+    }
+}
+
+@Composable
 fun OotbTextField() {
     TextField(
         value = "",
@@ -302,36 +402,42 @@ fun OotbLinearProgressIndicator() {
 }
 
 @Composable
-fun OotbAlertDialog() {
-    AlertDialog(
-        onDismissRequest = {
-            println("Alert Dialog Dismissed")
-        },
-        title = {
-            Text(text = "Alert Dialog")
-        },
-        text = {
-            Text(text = "This is an alert dialog")
-        },
-        confirmButton = {
-            Button(
-                onClick = {
-                    println("Alert Dialog Confirmed")
+fun OotbAlertDialog(
+    showDialog: Boolean,
+    onDismiss: () -> Unit
+) {
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                println("Alert Dialog Dismissed")
+            },
+            title = {
+                Text(text = "Alert Dialog")
+            },
+            text = {
+                Text(text = "This is an alert dialog")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        println("Alert Dialog Confirmed")
+                    }
+                ) {
+                    Text(text = "Confirm")
                 }
-            ) {
-                Text(text = "Confirm")
-            }
-        },
-        dismissButton = {
-            Button(
-                onClick = {
-                    println("Alert Dialog Dismissed")
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        println("Alert Dialog Dismissed")
+                        onDismiss()
+                    }
+                ) {
+                    Text(text = "Dismiss")
                 }
-            ) {
-                Text(text = "Dismiss")
             }
-        }
-    )
+        )
+    }
 }
 
 @Composable
