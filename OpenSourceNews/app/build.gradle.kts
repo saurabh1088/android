@@ -38,58 +38,22 @@ android {
 }
 
 dependencies {
-
-    // Core Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    // Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-
-    // ---------------------------
-    // Retrofit (Networking)
-    // ---------------------------
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    // ---------------------------
-    // Hilt (Dependency Injection)
-    // ---------------------------
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-compiler:2.50")
-
-    // (Optional but recommended for Compose + Hilt)
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-
-    // ---------------------------
-    // Room (Local Database)
-    // ---------------------------
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-
-    // ---------------------------
-    // Coil (Image Loading)
-    // ---------------------------
-    implementation("io.coil-kt:coil-compose:2.6.0")
-
-    // ---------------------------
-    // Testing
-    // ---------------------------
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
