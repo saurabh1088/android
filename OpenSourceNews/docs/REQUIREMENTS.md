@@ -4,7 +4,7 @@ Transitioning from iOS to Android development allows for a comparative analysis 
 
 ---
 
-## Project Overview: "OpenSource News"
+## Project Overview: "Open Source News"
 A high-performance news reader that fetches articles from a public API, allows for offline bookmarking, and supports a "Read Later" feature using local storage.
 
 ### Tech Stack (All Free)
