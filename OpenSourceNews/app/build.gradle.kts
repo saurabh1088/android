@@ -2,11 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
     namespace = "com.saurabh.opensourcenews"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.saurabh.opensourcenews"
@@ -48,6 +49,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
     
     // Example: Using ksp for a library like Room
     // implementation("androidx.room:room-runtime:2.6.1")
