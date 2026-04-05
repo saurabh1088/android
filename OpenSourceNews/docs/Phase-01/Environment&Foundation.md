@@ -1,6 +1,6 @@
 # Phase-01 : Environment & Foundation
 
-To initiate the development of **OpenSource News**, the focus begins with the **Foundation Phase**. This stage establishes the structural integrity of the application, ensuring that dependency management and core data models are correctly defined before UI or networking logic is implemented.
+To initiate the development of **Open Source News**, the focus begins with the **Foundation Phase**. This stage establishes the structural integrity of the application, ensuring that dependency management and core data models are correctly defined before UI or networking logic is implemented.
 
 ---
 
