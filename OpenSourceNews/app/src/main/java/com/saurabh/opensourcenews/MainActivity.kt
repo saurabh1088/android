@@ -11,6 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.saurabh.opensourcenews.ui.navigation.Screen
+import com.saurabh.opensourcenews.ui.screens.ArticleDetailScreen
+import com.saurabh.opensourcenews.ui.screens.HomeScreen
+import com.saurabh.opensourcenews.ui.screens.SavedScreen
 import com.saurabh.opensourcenews.ui.theme.OpenSourceNewsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,10 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             OpenSourceNewsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Open Source News",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    NewsNavigation(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -38,6 +42,20 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
+}
+
+@Composable
+fun NewsNavigation(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route,
+        modifier = modifier
+    ) {
+        composable(Screen.Home.route) { HomeScreen(navController) }
+        composable(Screen.ArticleDetail.route) { ArticleDetailScreen() }
+        composable(Screen.Saved.route) { SavedScreen(navController) }
+    }
 }
 
 @Preview(showBackground = true)
