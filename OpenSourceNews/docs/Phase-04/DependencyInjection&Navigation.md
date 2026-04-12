@@ -99,19 +99,3 @@ fun MainScreen() {
 ```
 
 ---
-
-## PR Title: feat: Integrate Hilt DI and Jetpack Navigation
-
-### Summary
-The developer has established the application's "wiring" and navigation flow.
-
-### Changes
-* **Dependency Injection:** Implemented `AppModule` to provide Singleton instances of Retrofit, Room, and the Repository.
-* **Navigation Graph:** Set up `Navigation Compose` to handle transitions between the news feed, article details, and saved bookmarks.
-* **Architecture Refinement:** Updated `NewsViewModel` to use `@HiltViewModel`, allowing it to receive the `NewsRepository` automatically through its constructor.
-
----
-
-### Comparison for the iOS Developer
-* **DI:** Hilt is more "magical" than Swinject; by using `@Inject`, the developer avoids passing dependencies through several initializers.
-* **Navigation:** `NavHost` functions very similarly to a programmatic `NavigationStack` where routes are defined by strings or objects, and state is maintained within the `NavController`.
